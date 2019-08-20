@@ -1,6 +1,13 @@
 import { connection } from '../connectDB/mysql'
+import { validatorResult, errorFormat } from '../middlewares/validatorResult'
 
 const join = (req, res) => {
+
+    const errors = validatorResult(req)
+    if (!errors.isEmpty()) {
+        return errorFormat(errors, res)
+    }
+
     const { name } = req.query
 
     connection.query("SELECT forum.* , member.* FROM forum JOIN member ON forum.name = member.name WHERE forum.name = ?", [name], (err, results, fields) => {

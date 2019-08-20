@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add mysql
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add express-validator
 
 PATH: 
   C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\Docker\Docker\Resources\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\Git\cmd;C:\Users\standbymik\.windows-build-tools\python27\;C:\Users\standbymik\AppData\Local\Microsoft\WindowsApps;;C:\Users\standbymik\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\standbymik\AppData\Roaming\npm;C:\Users\standbymik\AppData\Local\Yarn\bin
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: EPERM: operation not permitted, unlink 'C:\Users\standbymik\Desktop\docker\nodejs\node_modules\.bin\babel-node'
+  Error: EPERM: operation not permitted, unlink 'C:\Users\standbymik\Desktop\docker\nodejs\node_modules\.bin\nodemon'
 
 npm manifest: 
   {
@@ -24,7 +24,7 @@ npm manifest:
     "main": "app.js",
     "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1",
-      "start": "nodemon -L app.js --exec babel-node"
+      "start": "nodemon app.js --exec babel-node"
     },
     "author": "",
     "license": "ISC",
@@ -32,7 +32,8 @@ npm manifest:
       "body-parser": "^1.19.0",
       "cors": "^2.8.5",
       "dotenv": "^8.1.0",
-      "express": "^4.17.1"
+      "express": "^4.17.1",
+      "mysql": "^2.17.1"
     },
     "devDependencies": {
       "@babel/core": "^7.5.5",
@@ -840,6 +841,11 @@ Lockfile:
       isobject "^3.0.1"
       mixin-deep "^1.2.0"
       pascalcase "^0.1.1"
+  
+  bignumber.js@7.2.1:
+    version "7.2.1"
+    resolved "https://registry.yarnpkg.com/bignumber.js/-/bignumber.js-7.2.1.tgz#80c048759d826800807c4bfd521e50edbba57a5f"
+    integrity sha512-S4XzBk5sMB+Rcb/LNcpzXr57VRTxgAvaAEDAl1AwRx27j00hT84O6OkteE7u8UB3NuaaygCRrEpqox4uDOrbdQ==
   
   binary-extensions@^1.0.0:
     version "1.13.1"
@@ -2147,6 +2153,16 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.2.tgz#d09d1f357b443f493382a8eb3ccd183872ae6009"
     integrity sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==
   
+  mysql@^2.17.1:
+    version "2.17.1"
+    resolved "https://registry.yarnpkg.com/mysql/-/mysql-2.17.1.tgz#62bba4a039a9b2f73638cd1652ce50fc6f682899"
+    integrity sha512-7vMqHQ673SAk5C8fOzTG2LpPcf3bNt0oL3sFpxPEEFp1mdlDcrLK0On7z8ZYKaaHrHwNcQ/MTUz7/oobZ2OyyA==
+    dependencies:
+      bignumber.js "7.2.1"
+      readable-stream "2.3.6"
+      safe-buffer "5.1.2"
+      sqlstring "2.3.1"
+  
   nan@^2.12.1:
     version "2.14.0"
     resolved "https://registry.yarnpkg.com/nan/-/nan-2.14.0.tgz#7818f722027b2459a86f0295d434d1fc2336c52c"
@@ -2556,7 +2572,7 @@ Lockfile:
       minimist "^1.2.0"
       strip-json-comments "~2.0.1"
   
-  readable-stream@^2.0.2, readable-stream@^2.0.6:
+  readable-stream@2.3.6, readable-stream@^2.0.2, readable-stream@^2.0.6:
     version "2.3.6"
     resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.3.6.tgz#b11c27d88b8ff1fbe070643cf94b0c79ae1b0aaf"
     integrity sha512-tQtKA9WIAhBF3+VLAseyMqZeBjW0AHJoxOtYqSUZNJxauErmLbVm2FW1y+J/YA9dUrAC39ITejlZWhVIwawkKw==
@@ -2873,6 +2889,11 @@ Lockfile:
     integrity sha512-NzNVhJDYpwceVVii8/Hu6DKfD2G+NrQHlS/V/qgv763EYudVwEcMQNxd2lh+0VrUByXN/oJkl5grOhYWvQUYiw==
     dependencies:
       extend-shallow "^3.0.0"
+  
+  sqlstring@2.3.1:
+    version "2.3.1"
+    resolved "https://registry.yarnpkg.com/sqlstring/-/sqlstring-2.3.1.tgz#475393ff9e91479aea62dcaf0ca3d14983a7fb40"
+    integrity sha1-R1OT/56RR5rqYtyvDKPRSYOn+0A=
   
   static-extend@^0.1.1:
     version "0.1.2"
