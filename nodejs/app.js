@@ -3,6 +3,7 @@ const app = express()
 import bodyParser from 'body-parser'
 import cors from 'cors'
 import { connection } from './connectDB/mysql'
+import forumRoute from './routes/forumRoute'
 
 app.use(cors())
 app.use(bodyParser.json())
@@ -12,16 +13,11 @@ app.get('/', (req, res) => {
     res.json({ success: true })
 })
 
+app.use('/forum', forumRoute)
+
 app.get('/get_mysql', (req, res) => {
 
-    connection.query('SELECT * FROM forum', function (error, results, fields) {
-        if (error) throw error;
-        // connected!
-
-        res.json(results)
-    })
-
-    // res.json({ success: true })
+    res.json({ success: true })
 })
 
 app.listen(3000, () => {
