@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+  nodejs:
+    container_name: nodejs
+    image: node:10-alpine
+    working_dir: /app
+    ports:
+      - 3000:3000
+    environment:
+      - NODE_ENV=delvelop
+    command:
+      "npm start"
+    volumes:
+      - ./nodejs:/app
+    links:
+      - mariaDB
+
+  mariaDB:
+    container_name: mariaDB
+    image: mariadb
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+    volumes: 
+    - /data:/var/lib/mysql
+
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin/phpmyadmin:4.9
+    ports:
+      - 8080:80
+    environment:
+      - PMA_HOST=mariaDB
+      - PMA_PORT=3306
+    links:
+      - mariaDB
+
+  mongoDB:
+    container_name: mongoDB
+    image: mongo:4.2
+    ports:
+      - 27017:27017
+    volumes:
+      - ./db:/data/db
