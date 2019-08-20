@@ -2,15 +2,13 @@ import { connection } from '../connectDB/mysql'
 
 const addForumHandler = async (req, res) => {
 
-    connection.query('SELECT * FROM forum', function (error, results, fields) {
-        if (error) throw error;
-        // connected!
+    const date = new Date()
 
-        console.log(fields)
+    connection.query('INSERT INTO forum SET ?', [{ title: 'title2', name: 'name2', create_time: date }], (err, results, fields) => {
+        if (err) throw err
 
-        return res.json(results)
+        console.log(results.insertId)
     })
-
 }
 
 export {
