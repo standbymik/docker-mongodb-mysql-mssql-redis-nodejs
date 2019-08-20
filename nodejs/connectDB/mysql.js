@@ -5,7 +5,15 @@ const connection = mysql.createConnection({
     database: 'standbymik',
     user: 'root',
     password: '123456'
-});
+})
+
+connection.connect((err) => {
+    if (err) {
+        console.error('error connecting: ' + err.stack);
+        return false;
+    }
+
+})
 
 export {
     connection
