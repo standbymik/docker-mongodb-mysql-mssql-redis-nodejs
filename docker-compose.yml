@@ -15,6 +15,8 @@ services:
       - ./nodejs:/app
     links:
       - mariaDB
+      - mongoDB
+      - mssqlDB
 
   mariaDB:
     container_name: mariaDB
@@ -40,7 +42,23 @@ services:
   mongoDB:
     container_name: mongoDB
     image: mongo:4.2
+    restart: always
     ports:
       - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=123456
     volumes:
-      - ./db:/data/db
+      - ./db:/etc/mongo
+
+  mssqlDB:
+    container_name: mssqlDB
+    image: microsoft/mssql-server-linux
+    ports:
+      - 1433:1433
+    volumes:
+      - ./temp:/temp
+    environment:
+      - ACCEPT_EULA=Y
+      - sa_password=123456
+      - attach_dbs=[{'dbName':'SampleDB','dbFiles':['C:\\temp\\sampledb.mdf','C:\\temp\\sampledb_log.ldf']}]
