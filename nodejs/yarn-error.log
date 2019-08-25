@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add express-validator
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add mssql
 
 PATH: 
   C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\Docker\Docker\Resources\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\Git\cmd;C:\Users\standbymik\.windows-build-tools\python27\;C:\Users\standbymik\AppData\Local\Microsoft\WindowsApps;;C:\Users\standbymik\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\standbymik\AppData\Roaming\npm;C:\Users\standbymik\AppData\Local\Yarn\bin
@@ -24,7 +24,7 @@ npm manifest:
     "main": "app.js",
     "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1",
-      "start": "nodemon app.js --exec babel-node"
+      "start": "nodemon -L app.js --exec babel-node"
     },
     "author": "",
     "license": "ISC",
@@ -33,6 +33,7 @@ npm manifest:
       "cors": "^2.8.5",
       "dotenv": "^8.1.0",
       "express": "^4.17.1",
+      "express-validator": "^6.1.1",
       "mysql": "^2.17.1"
     },
     "devDependencies": {
@@ -1334,6 +1335,14 @@ Lockfile:
       snapdragon "^0.8.1"
       to-regex "^3.0.1"
   
+  express-validator@^6.1.1:
+    version "6.1.1"
+    resolved "https://registry.yarnpkg.com/express-validator/-/express-validator-6.1.1.tgz#2ac81c3a11ce670da6f85a39af6f726a587ee2e7"
+    integrity sha512-AF6YOhdDiCU7tUOO/OHp2W++I3qpYX7EInMmEEcRGOjs+qoubwgc5s6Wo3OQgxwsWRGCxXlrF73SIDEmY4y3wg==
+    dependencies:
+      lodash "^4.17.11"
+      validator "^11.0.0"
+  
   express@^4.17.1:
     version "4.17.1"
     resolved "https://registry.yarnpkg.com/express/-/express-4.17.1.tgz#4491fc38605cf51f8629d39c2b5d026f98a4c134"
@@ -1988,7 +1997,7 @@ Lockfile:
       p-locate "^3.0.0"
       path-exists "^3.0.0"
   
-  lodash@^4.17.13:
+  lodash@^4.17.11, lodash@^4.17.13:
     version "4.17.15"
     resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
     integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
@@ -3162,6 +3171,11 @@ Lockfile:
     integrity sha512-amh9CCg3ZxkzQ48Mhcb8iX7xpAfYJgePHxWMQCBWECpOSqJUXgY26ncA61UTV0BkPqfhcy6mzwCIoP4ygxpW8w==
     dependencies:
       homedir-polyfill "^1.0.1"
+  
+  validator@^11.0.0:
+    version "11.1.0"
+    resolved "https://registry.yarnpkg.com/validator/-/validator-11.1.0.tgz#ac18cac42e0aa5902b603d7a5d9b7827e2346ac4"
+    integrity sha512-qiQ5ktdO7CD6C/5/mYV4jku/7qnqzjrxb3C/Q5wR3vGGinHTgJZN/TdFT3ZX4vXhX2R1PXx42fB1cn5W+uJ4lg==
   
   vary@^1, vary@~1.1.2:
     version "1.1.2"

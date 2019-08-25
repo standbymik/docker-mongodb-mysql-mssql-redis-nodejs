@@ -2,7 +2,8 @@ import express from 'express'
 const app = express()
 import bodyParser from 'body-parser'
 import cors from 'cors'
-import { connection } from './connectDB/mysql'
+// import { connection } from './connectDB/mysql'
+import { connection } from './connectDB/mssqlConfig'
 import forumRoute from './routes/forumRoute'
 
 app.use(cors())
@@ -15,7 +16,7 @@ app.get('/', (req, res) => {
 
 app.use('/forum', forumRoute)
 
-app.get('/get_mysql', (req, res) => {
+app.get('/mssql', (req, res) => {
 
     res.json({ success: true })
 })

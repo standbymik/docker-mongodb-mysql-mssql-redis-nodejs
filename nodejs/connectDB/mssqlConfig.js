@@ -1,8 +1,10 @@
+import sql from 'mssql'
+
 const config = {
     user: 'root',
     password: '123456',
     server: 'mssqlDB', // You can use 'localhost\\instance' to connect to named instance
-    database: 'standbymik',
+    database: 'tempdb',
 
     options: {
         encrypt: true // Use this if you're on Windows Azure
@@ -10,17 +12,12 @@ const config = {
 }
 
 const connectDB = async () => {
-    try {
-        let pool = await sql.connect(config)
-        let result = await pool.request()
-        return result
-
-    } catch (err) {
-        return console.log(err)
-    }
+    let pool = await sql.connect(config)
+    let request = await pool.request()
+    return request
 }
 
-connection = connectDB()
+const connection = connectDB()
 
 export {
     connection
