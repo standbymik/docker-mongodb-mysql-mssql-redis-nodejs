@@ -53,12 +53,11 @@ services:
 
   mssqlDB:
     container_name: mssqlDB
-    image: microsoft/mssql-server-linux
+    image: mcr.microsoft.com/mssql/server
     ports:
       - 1433:1433
     volumes:
-      - ./temp:/temp
+      - ./temp:/var/opt/mssql/data/
     environment:
       - ACCEPT_EULA=Y
-      - sa_password=123456
-      - attach_dbs=[{'dbName':'SampleDB','dbFiles':['C:\\temp\\sampledb.mdf','C:\\temp\\sampledb_log.ldf']}]
+      - SA_PASSWORD=Mik123456;

@@ -3,8 +3,9 @@ const app = express()
 import bodyParser from 'body-parser'
 import cors from 'cors'
 // import { connection } from './connectDB/mysql'
-import { connection } from './connectDB/mssqlConfig'
+import { config } from './connectDB/mssql'
 import forumRoute from './routes/forumRoute'
+import sql from 'mssql'
 
 app.use(cors())
 app.use(bodyParser.json())
@@ -16,7 +17,15 @@ app.get('/', (req, res) => {
 
 app.use('/forum', forumRoute)
 
-app.get('/mssql', (req, res) => {
+app.get('/mssql', async (req, res) => {
+
+    let pool = await sql.connect(config)
+    let result = await pool.request()
+        .query(`select * from dbo."user" where username = 'standbymikk' `)
+
+    console.log(result.recordset)
+
+    sql.close()
 
     res.json({ success: true })
 })
