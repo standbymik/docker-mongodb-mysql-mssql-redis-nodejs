@@ -21,7 +21,7 @@ app.get('/mssql', async (req, res) => {
 
     let pool = await sql.connect(config)
     let result = await pool.request()
-        .query(`select * from dbo."user" where username = 'standbymikk' `)
+        .query(`select * from dbo."users" where username = 'standbymik' `)
 
     console.log(result.recordset)
 

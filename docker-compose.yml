@@ -25,8 +25,8 @@ services:
       - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: 123456
-    volumes: 
-    - /data:/var/lib/mysql
+    # volumes: 
+    # - ./data:/var/lib/mysql
 
   phpmyadmin:
     container_name: phpmyadmin
@@ -60,4 +60,4 @@ services:
       - ./temp:/var/opt/mssql/data/
     environment:
       - ACCEPT_EULA=Y
-      - SA_PASSWORD=Mik123456;
+      - SA_PASSWORD=Test123456;
