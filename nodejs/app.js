@@ -19,15 +19,16 @@ app.use('/forum', forumRoute)
 
 app.get('/mssql', async (req, res) => {
 
+    const { username } = req.query
+
     let pool = await sql.connect(config)
     let result = await pool.request()
-        .query(`select * from dbo."users" where username = 'standbymik' `)
-
-    console.log(result.recordset)
+        .query(`select * from dbo."users" where username = '${username}' `)
+    const data = result.recordset.length===0 ? null : result.recordset[0]
 
     sql.close()
 
-    res.json({ success: true })
+    res.json({ success: true, data })
 })
 
 app.listen(3000, () => {
