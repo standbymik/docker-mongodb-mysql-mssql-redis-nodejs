@@ -6,6 +6,7 @@ import cors from 'cors'
 import { config } from './connectDB/mssql'
 import forumRoute from './routes/forumRoute'
 import sql from 'mssql'
+import redisRoute from './routes/redisRoute'
 
 app.use(cors())
 app.use(bodyParser.json())
@@ -15,6 +16,7 @@ app.get('/', (req, res) => {
     res.json({ success: true })
 })
 
+app.use('/redis', redisRoute)
 app.use('/forum', forumRoute)
 
 app.get('/mssql', async (req, res) => {
@@ -24,7 +26,7 @@ app.get('/mssql', async (req, res) => {
     let pool = await sql.connect(config)
     let result = await pool.request()
         .query(`select * from dbo."users" where username = '${username}' `)
-    const data = result.recordset.length===0 ? null : result.recordset[0]
+    const data = result.recordset.length === 0 ? null : result.recordset[0]
 
     sql.close()
 

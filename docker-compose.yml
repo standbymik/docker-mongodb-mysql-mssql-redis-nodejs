@@ -17,6 +17,7 @@ services:
       - mariaDB
       - mongoDB
       - mssqlDB
+      - redis
 
   mariaDB:
     container_name: mariaDB
@@ -26,7 +27,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: 123456
     # volumes: 
-    # - ./data:/var/lib/mysql
+    #   - ./data:/var/lib/mysql
 
   phpmyadmin:
     container_name: phpmyadmin
@@ -61,3 +62,9 @@ services:
     environment:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=Test123456;
+
+  redis:
+    container_name: redis
+    image: redis:5.0.5-alpine
+    ports:
+      - 6379:6379
