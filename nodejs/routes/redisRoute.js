@@ -20,7 +20,7 @@ router.get('/add', async (req, res) => {
 
     const result = JSON.stringify(data)
 
-    redis.set('f1', result)
+    redis.set('f1', result, 'ex', 10)
     res.json({ success: true })
 })
 

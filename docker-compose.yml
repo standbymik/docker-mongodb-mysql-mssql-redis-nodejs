@@ -26,8 +26,9 @@ services:
       - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: 123456
-    # volumes: 
-    #   - ./data:/var/lib/mysql
+    volumes: 
+      - /mariadb/initdb:/docker-entrypoint-initdb.d
+      - /mariadb/data:/var/lib/mysql
 
   phpmyadmin:
     container_name: phpmyadmin
